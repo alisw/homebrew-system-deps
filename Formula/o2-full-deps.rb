@@ -5,7 +5,6 @@ class O2FullDeps < Formula
   sha256 "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   version "19.6-1"
 
-  depends_on "apache-arrow"
   depends_on "autoconf"
   depends_on "automake"
   depends_on "cmake"
