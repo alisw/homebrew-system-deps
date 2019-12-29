@@ -1,4 +1,4 @@
-class AliBuild < Formula
+class Alibuild < Formula
   include Language::Python::Virtualenv
 
   desc "ALICE Build Tool"
