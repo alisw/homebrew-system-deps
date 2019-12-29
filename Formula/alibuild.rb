@@ -4,7 +4,7 @@ class Alibuild < Formula
   desc "ALICE Build Tool"
   homepage "http://alisw.github.io/alibuild"
   url "https://github.com/alisw/alibuild/archive/1.5.5.tar.gz"
-  sha256 "256c2b5fc0e3885599624f39793731f93162021c21c1487c8a29ef59b4005b18"
+  sha256 "39f199e907c68ee1dce01cd6949659d560543ee77e1add673a10997c2bf02f5f"
   version "1.5.5"
 
   resource "alibuild" do
