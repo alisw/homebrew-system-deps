@@ -46,5 +46,7 @@ class Alibuild < Formula
     venv = virtualenv_create(libexec)
     venv.pip_install resources
     venv.pip_install_and_link buildpath
+    bin.install_symlink "#{libexec}/bin/aliBuild" => "aliBuild"
+    bin.install_symlink "#{libexec}/bin/alienv" => "alienv"
   end
 end
