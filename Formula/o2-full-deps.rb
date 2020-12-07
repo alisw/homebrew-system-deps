@@ -3,7 +3,7 @@ class O2FullDeps < Formula
   homepage "https://alisw.github.io"
   url "file:///dev/null"
   sha256 "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-  version "19.6-1"
+  version "20.12-1"
 
   depends_on "autoconf"
   depends_on "automake"
