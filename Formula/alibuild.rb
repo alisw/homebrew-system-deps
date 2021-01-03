@@ -3,26 +3,26 @@ class Alibuild < Formula
 
   desc "ALICE Build Tool"
   homepage "http://alisw.github.io/alibuild"
-  url "https://github.com/alisw/alibuild/archive/v1.6.4.tar.gz"
-  sha256 "3d43c5745e766eef6cd1e0b75b734180d7ed1606a4a3848c364bc3570f7213c7"
-  version "1.6.4"
+  url "https://github.com/alisw/alibuild/archive/v1.7.0.tar.gz"
+  sha256 "6de68db015e643002cbe672c7b9aecf268389de8eb1e51e07b44c486485f53f3"
+  version "1.7.0"
   depends_on "s3cmd"
   depends_on "pigz"
   depends_on "modules"
 
   resource "alibuild" do
-    url "https://files.pythonhosted.org/packages/fb/2f/284171b79d6274bec0684fb3295259a30b642a04f85dad2aac5f0ea6f65e/alibuild-1.6.4.tar.gz"
-    sha256 "7693fd8a6a59f7a31852473fea762a2e106bbc068a0427c6fea213e941815cd3"
+    url "https://files.pythonhosted.org/packages/26/78/4857d4299184bb343abbba7e08e6eb49dcd614eeb94802b1c51c405acb98/alibuild-1.7.0.tar.gz"
+    sha256 "f757114497d32ed719073651cf1a34aab9ab58521a793aa49fcd53233cb31249"
   end
 
   resource "certifi" do
-    url "https://files.pythonhosted.org/packages/e6/de/879cf857ae6f890dfa23c3d6239814c5471936b618c8fb0c8732ad5da885/certifi-2020.11.8.tar.gz"
-    sha256 "f05def092c44fbf25834a51509ef6e631dc19765ab8a57b4e7ab85531f0a9cf4"
+    url "https://files.pythonhosted.org/packages/06/a9/cd1fd8ee13f73a4d4f491ee219deeeae20afefa914dfb4c130cfc9dc397a/certifi-2020.12.5.tar.gz"
+    sha256 "1a4995114262bffbc2413b159f2a1a480c969de6e6eb13ee966d470af86af59c"
   end
 
   resource "chardet" do
-    url "https://files.pythonhosted.org/packages/fc/bb/a5768c230f9ddb03acc9ef3f0d4a3cf93462473795d18e9535498c8f929d/chardet-3.0.4.tar.gz"
-    sha256 "84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae"
+    url "https://files.pythonhosted.org/packages/ee/2d/9cdc2b527e127b4c9db64b86647d567985940ac3698eeabc7ffaccb4ea61/chardet-4.0.0.tar.gz"
+    sha256 "0d6f53a15db4120f2b08c94f11e7d93d2c911ee118b6b30a04ec3ee8310179fa"
   end
 
   resource "distro" do
@@ -41,13 +41,13 @@ class Alibuild < Formula
   end
 
   resource "requests" do
-    url "https://files.pythonhosted.org/packages/da/67/672b422d9daf07365259958912ba533a0ecab839d4084c487a5fe9a5405f/requests-2.24.0.tar.gz"
-    sha256 "b3559a131db72c33ee969480840fff4bb6dd111de7dd27c8ee1f820f4f00231b"
+    url "https://files.pythonhosted.org/packages/6b/47/c14abc08432ab22dc18b9892252efaf005ab44066de871e72a38d6af464b/requests-2.25.1.tar.gz"
+    sha256 "27973dd4a904a4f13b263a19c866c13b92a39ed1c964655f025f3f8d3d75b804"
   end
 
   resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/76/d9/bbbafc76b18da706451fa91bc2ebe21c0daf8868ef3c30b869ac7cb7f01d/urllib3-1.25.11.tar.gz"
-    sha256 "8d7eaa5a82a1cac232164990f04874c594c9453ec55eef02eab885aa02fc17a2"
+    url "https://files.pythonhosted.org/packages/29/e6/d1a1d78c439cad688757b70f26c50a53332167c364edb0134cadd280e234/urllib3-1.26.2.tar.gz"
+    sha256 "19188f96923873c92ccb987120ec4acaa12f0461fa9ce5d3d0772bc965a39e08"
   end
 
   def install
