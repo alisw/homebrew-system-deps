@@ -11,8 +11,8 @@ class Alibuild < Formula
   depends_on "modules"
 
   resource "alibuild" do
-    url "https://files.pythonhosted.org/packages/26/78/4857d4299184bb343abbba7e08e6eb49dcd614eeb94802b1c51c405acb98/alibuild-1.7.0.tar.gz"
-    sha256 "f757114497d32ed719073651cf1a34aab9ab58521a793aa49fcd53233cb31249"
+    url "https://files.pythonhosted.org/packages/8d/c6/a28aecab4716d71a3d2db52d4ead3b69bc5186e02c3e61739fb47b8d9fa0/alibuild-1.7.2.tar.gz"
+    sha256 "91db55de3b97c3cc7fba6d4e081ed5f151ce90e9ea0ecb1b76adc4b0927bd380"
   end
 
   resource "certifi" do
@@ -36,8 +36,8 @@ class Alibuild < Formula
   end
 
   resource "PyYAML" do
-    url "https://files.pythonhosted.org/packages/64/c2/b80047c7ac2478f9501676c988a5411ed5572f35d1beff9cae07d321512c/PyYAML-5.3.1.tar.gz"
-    sha256 "b8eac752c5e14d3eca0e6dd9199cd627518cb5ec06add0de9d32baeee6fe645d"
+    url "https://files.pythonhosted.org/packages/a0/a4/d63f2d7597e1a4b55aa3b4d6c5b029991d3b824b5bd331af8d4ab1ed687d/PyYAML-5.4.1.tar.gz"
+    sha256 "607774cbba28732bfa802b54baa7484215f530991055bb562efbed5b2f20a45e"
   end
 
   resource "requests" do
@@ -46,8 +46,8 @@ class Alibuild < Formula
   end
 
   resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/29/e6/d1a1d78c439cad688757b70f26c50a53332167c364edb0134cadd280e234/urllib3-1.26.2.tar.gz"
-    sha256 "19188f96923873c92ccb987120ec4acaa12f0461fa9ce5d3d0772bc965a39e08"
+    url "https://files.pythonhosted.org/packages/d7/8d/7ee68c6b48e1ec8d41198f694ecdc15f7596356f2ff8e6b1420300cf5db3/urllib3-1.26.3.tar.gz"
+    sha256 "de3eedaad74a2683334e282005cd8d7f22f4d55fa690a2a1020a416cb0a47e73"
   end
 
   def install
