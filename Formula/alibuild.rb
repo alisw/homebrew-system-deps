@@ -11,13 +11,13 @@ class Alibuild < Formula
   depends_on "modules"
 
   resource "alibuild" do
-    url "https://files.pythonhosted.org/packages/ec/d6/d4a1e713bf75bba55d73babda70afbedd5490a3cc8e238c99a1d0a885293/alibuild-1.8.2.tar.gz"
-    sha256 "e47c1dcdd169ba4e022e5025ebbc827e37be9da5d04f4ad448b5a5d4c4e4b914"
+    url "https://files.pythonhosted.org/packages/df/e1/d03de445c1a8241fb73db14014ffc2bf7cd9aa0def5eec7513ee470c70de/alibuild-1.8.4.tar.gz"
+    sha256 "84541f3884adb72b1e01ca0d3244a195e825b966dc34e102f0227d816cce711c"
   end
 
   resource "certifi" do
-    url "https://files.pythonhosted.org/packages/06/a9/cd1fd8ee13f73a4d4f491ee219deeeae20afefa914dfb4c130cfc9dc397a/certifi-2020.12.5.tar.gz"
-    sha256 "1a4995114262bffbc2413b159f2a1a480c969de6e6eb13ee966d470af86af59c"
+    url "https://files.pythonhosted.org/packages/6d/78/f8db8d57f520a54f0b8a438319c342c61c22759d8f9a1cd2e2180b5e5ea9/certifi-2021.5.30.tar.gz"
+    sha256 "2bbf76fd432960138b3ef6dda3dde0544f27cbf8546c458e60baf371917ba9ee"
   end
 
   resource "chardet" do
@@ -46,8 +46,8 @@ class Alibuild < Formula
   end
 
   resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/cb/cf/871177f1fc795c6c10787bc0e1f27bb6cf7b81dbde399fd35860472cecbc/urllib3-1.26.4.tar.gz"
-    sha256 "e7b021f7241115872f92f43c6508082facffbd1c048e3c6e2bb9c2a157e28937"
+    url "https://files.pythonhosted.org/packages/94/40/c396b5b212533716949a4d295f91a4c100d51ba95ea9e2d96b6b0517e5a5/urllib3-1.26.5.tar.gz"
+    sha256 "a7acd0977125325f516bda9735fa7142b909a8d01e8b2e4c8108d0984e6e0098"
   end
   
   def install
