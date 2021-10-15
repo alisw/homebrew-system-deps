@@ -3,37 +3,32 @@ class Alibuild < Formula
 
   desc "ALICE Build Tool"
   homepage "http://alisw.github.io/alibuild"
-  url "https://files.pythonhosted.org/packages/48/2a/cd497ed06793deced9f7da3637cc3b29226e35d914888a89f7e5fb4c0126/alibuild-1.8.9.tar.gz"
-  sha256 "0ec7eba12ead0c3afc8d1dea84e46e2b56e69aea6282aa15afbfa93f11787fc0"
-  version "1.8.9"
+  url "https://files.pythonhosted.org/packages/27/52/35dbf8c8e55f2d7b97d858e7e25927ac33b3699e41b65f27c10a32c95c0d/alibuild-1.9.1.tar.gz"
+  sha256 "2e8ceb9fc597ab0201463e58f886177a5514278bfec3e97954f1ddc6afe719c9"
+  version "1.9.1"
   depends_on "s3cmd"
   depends_on "pigz"
   depends_on "modules"
   depends_on "libyaml"
 
-  resource "alibuild" do
-    url "https://files.pythonhosted.org/packages/48/2a/cd497ed06793deced9f7da3637cc3b29226e35d914888a89f7e5fb4c0126/alibuild-1.8.9.tar.gz"
-    sha256 "0ec7eba12ead0c3afc8d1dea84e46e2b56e69aea6282aa15afbfa93f11787fc0"
-  end
-
   resource "boto3" do
-    url "https://files.pythonhosted.org/packages/5f/4d/c86763405b1a53d98257a136c7bb42aa60f5c7e242e66197c43b6616840a/boto3-1.18.23.tar.gz"
-    sha256 "31cc69e665f773390c4c17ce340d2420e45fbac51d46d945cc4a58d483ec5da6"
+    url "https://files.pythonhosted.org/packages/f1/25/4773ca66ec580636c4e8ab473c9e5375a266746f3dbfe4f85235b9c67211/boto3-1.18.62.tar.gz"
+    sha256 "364a0fd497147ff0e15327f653223b05e60a1afce002995e5b1106084355352e"
   end
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/a6/74/c4f3118df00ef7b7d975571ed2f3cbac71e87b396b2171be9879d7b57ffb/botocore-1.21.23.tar.gz"
-    sha256 "d0146d31dbc475942b578b47dd5bcf94d18fbce8c6d2ce5f12195e005de9b754"
+    url "https://files.pythonhosted.org/packages/60/dc/d214623d85eb3c8dcb26a60ea15df43ac81747bcb26db5cc957affb4c517/botocore-1.21.62.tar.gz"
+    sha256 "c92fee381c6f2771f7ec2bffaff2938b8a1c2a957560815a01ad77c975268fdd"
   end
 
   resource "certifi" do
-    url "https://files.pythonhosted.org/packages/6d/78/f8db8d57f520a54f0b8a438319c342c61c22759d8f9a1cd2e2180b5e5ea9/certifi-2021.5.30.tar.gz"
-    sha256 "2bbf76fd432960138b3ef6dda3dde0544f27cbf8546c458e60baf371917ba9ee"
+    url "https://files.pythonhosted.org/packages/6c/ae/d26450834f0acc9e3d1f74508da6df1551ceab6c2ce0766a593362d6d57f/certifi-2021.10.8.tar.gz"
+    sha256 "78884e7c1d4b00ce3cea67b44566851c4343c120abd683433ce934a68ea58872"
   end
 
   resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/e7/4e/2af0238001648ded297fb54ceb425ca26faa15b341b4fac5371d3938666e/charset-normalizer-2.0.4.tar.gz"
-    sha256 "f23667ebe1084be45f6ae0538e4a5a865206544097e4e8bbcacf42cd02a348f3"
+    url "https://files.pythonhosted.org/packages/9f/c5/334c019f92c26e59637bb42bd14a190428874b2b2de75a355da394cf16c1/charset-normalizer-2.0.7.tar.gz"
+    sha256 "e019de665e2bcf9c2b64e2e5aa025fa991da8720daa3c1138cadd2fd1856aed0"
   end
 
   resource "distro" do
@@ -42,8 +37,8 @@ class Alibuild < Formula
   end
 
   resource "idna" do
-    url "https://files.pythonhosted.org/packages/cb/38/4c4d00ddfa48abe616d7e572e02a04273603db446975ab46bbcd36552005/idna-3.2.tar.gz"
-    sha256 "467fbad99067910785144ce333826c71fb0e63a425657295239737f7ecd125f3"
+    url "https://files.pythonhosted.org/packages/62/08/e3fc7c8161090f742f504f40b1bccbfc544d4a4e09eb774bf40aafce5436/idna-3.3.tar.gz"
+    sha256 "9d643ff0a55b762d5cdb124b8eaa99c66322e2157b69160bc32796e824360e6d"
   end
 
   resource "jmespath" do
@@ -57,8 +52,8 @@ class Alibuild < Formula
   end
 
   resource "PyYAML" do
-    url "https://files.pythonhosted.org/packages/a0/a4/d63f2d7597e1a4b55aa3b4d6c5b029991d3b824b5bd331af8d4ab1ed687d/PyYAML-5.4.1.tar.gz"
-    sha256 "607774cbba28732bfa802b54baa7484215f530991055bb562efbed5b2f20a45e"
+    url "https://files.pythonhosted.org/packages/36/2b/61d51a2c4f25ef062ae3f74576b01638bebad5e045f747ff12643df63844/PyYAML-6.0.tar.gz"
+    sha256 "68fb519c14306fec9720a2a5b45bc9f0c8d1b9c72adf45c37baedfcd949c35a2"
   end
 
   resource "requests" do
@@ -77,8 +72,8 @@ class Alibuild < Formula
   end
 
   resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/4f/5a/597ef5911cb8919efe4d86206aa8b2658616d676a7088f0825ca08bd7cb8/urllib3-1.26.6.tar.gz"
-    sha256 "f57b4c16c62fa2760b7e3d97c35b255512fb6b59a259730f36ba32ce9f8e342f"
+    url "https://files.pythonhosted.org/packages/80/be/3ee43b6c5757cabea19e75b8f46eaf05a2f5144107d7db48c7cf3a864f73/urllib3-1.26.7.tar.gz"
+    sha256 "4987c65554f7a2dbf30c18fd48778ef124af6fab771a377103da0585e2336ece"
   end
 
   def install
