@@ -38,7 +38,7 @@ class O2FullDeps < Formula
   depends_on "utf8proc"
   depends_on "libidn2"
   depends_on "gtk-doc"
-  depends_on "llvm"
+  depends_on "llvm@13"
   depends_on "clang-format"
 
   def install
