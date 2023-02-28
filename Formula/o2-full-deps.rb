@@ -3,7 +3,7 @@ class O2FullDeps < Formula
   homepage "https://alisw.github.io"
   url "file:///dev/null"
   sha256 "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-  version "21.06-1"
+  version "23.09-1"
 
   depends_on "autoconf"
   depends_on "automake"
@@ -12,7 +12,7 @@ class O2FullDeps < Formula
   depends_on "coreutils"
   depends_on "gettext"
   depends_on "texinfo"
-  depends_on "glfw3"
+  depends_on "glfw"
   depends_on "gmp"
   depends_on "gsl"
   depends_on "hub"
