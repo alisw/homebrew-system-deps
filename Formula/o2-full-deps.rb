@@ -3,7 +3,7 @@ class O2FullDeps < Formula
   homepage "https://alisw.github.io"
   url "file:///dev/null"
   sha256 "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-  version "23.15-1"
+  version "24.07-1"  # year.week numbering -- run "date +%y.%W"
 
   depends_on "autoconf"
   depends_on "automake"
@@ -40,6 +40,9 @@ class O2FullDeps < Formula
   depends_on "libidn2"
   depends_on "gtk-doc"
   depends_on "llvm@15"
+  # We need to depend on whatever version brew selects by default when we run
+  # "brew --prefix python"! As of Feb 2024, this is 3.11.
+  depends_on "python@3.11"
   depends_on "clang-format"
 
   def install
