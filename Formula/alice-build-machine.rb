@@ -10,6 +10,7 @@ class AliceBuildMachine < Formula
   depends_on "nomad"
   depends_on "consul"
   depends_on "jq"   # for build scripts
+  depends_on "git"
 
   def install
     system "touch", "#{prefix}/empty"
