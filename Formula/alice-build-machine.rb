@@ -7,8 +7,8 @@ class AliceBuildMachine < Formula
 
   depends_on "alisw/system-deps/o2-full-deps"
   depends_on "openjdk"
-  depends_on "nomad"
-  depends_on "consul"
+  depends_on "hashicorp/tap/nomad"
+  depends_on "hashicorp/tap/consul"
   depends_on "jq"   # for build scripts
   depends_on "git"
 
