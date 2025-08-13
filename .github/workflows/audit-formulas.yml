@@ -1,0 +1,37 @@
+name: Audit Homebrew Formulas
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: macos-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v5
+
+    - name: Set up Homebrew
+      id: set-up-homebrew
+      uses: Homebrew/actions/setup-homebrew@master
+
+    - name: Create temporary tap
+      run: |
+        set -x
+        brew tap-new homebrew-releaser/test --no-git
+
+    - name: Copy formulas to temporary tap
+      run: |
+        set -x
+        cp -r Formula/ "$(brew --repository)"/Library/Taps/homebrew-releaser/homebrew-test/Formula/
+
+    - name: Audit formulas
+      run: |
+        set -x
+        for file in "$(brew --repository)"/Library/Taps/homebrew-releaser/homebrew-test/Formula/*
+        do
+            brew audit --formula "homebrew-releaser/test/$(basename "${file%.rb}")"
+        done
