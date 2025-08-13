@@ -2,14 +2,13 @@ class Alibuild < Formula
   include Language::Python::Virtualenv
 
   desc "ALICE Build Tool"
-  homepage "http://alisw.github.io/alibuild"
+  homepage "https://alisw.github.io/alibuild"
   url "https://files.pythonhosted.org/packages/5e/91/808e6dfa49afe9f7f9645ae31214f8acfd59dfc542a32f99e994165cd54a/alibuild-1.17.26.tar.gz"
   sha256 "01d8b3faf22ab8c5d68301921b0b909551e231a421262340a00ab92bc45ae1b7"
-  version "1.17.26"
-  depends_on "s3cmd"
-  depends_on "pigz"
-  depends_on "modules"
   depends_on "libyaml"
+  depends_on "modules"
+  depends_on "pigz"
+  depends_on "s3cmd"
 
   resource "boto3" do
     url "https://files.pythonhosted.org/packages/f7/99/3e8b48f15580672eda20f33439fc1622bd611f6238b6d05407320e1fb98c/boto3-1.35.99.tar.gz"
@@ -87,7 +86,7 @@ class Alibuild < Formula
   end
 
   def install
-    virtualenv_install_with_resources :using => "python@3"
+    virtualenv_install_with_resources using: "python@3"
     bin.install_symlink "#{libexec}/bin/aliBuild" => "aliBuild"
     bin.install_symlink "#{libexec}/bin/alienv" => "alienv"
   end
