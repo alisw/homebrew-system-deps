@@ -3,8 +3,8 @@ class Alibuild < Formula
 
   desc "ALICE Build Tool"
   homepage "https://alisw.github.io/alibuild"
-  url "https://files.pythonhosted.org/packages/5e/ea/86c442d1fa53b128e71513b7f57e42516ec5e1c387a131893cf921a852c2/alibuild-1.17.29.tar.gz"
-  sha256 "065dfc8795decdbfd922b32cd1e9de2957e0bcaa67e38d87866e644f4c07748c"
+  url "https://files.pythonhosted.org/packages/f3/9a/4a8311c6ff69887e0a3ba7ccb5ffe37a94432470bbf4fde49cf99c5da631/alibuild-1.17.30.tar.gz"
+  sha256 "80b2509d0805ac1ff861307cae9622702f7b6afbb0d0484ee2151ac58630bdb1"
   depends_on "libyaml"
   depends_on "modules"
   depends_on "pigz"
@@ -51,8 +51,8 @@ class Alibuild < Formula
   end
 
   resource "markupsafe" do
-    url "https://files.pythonhosted.org/packages/b2/97/5d42485e71dfc078108a86d6de8fa46db44a1a9295e89c5d6d4a06e23a62/markupsafe-3.0.2.tar.gz"
-    sha256 "ee55d3edf80167e48ea11a923c7386f4669df67d7994554387f84e7d8b0a2bf0"
+    url "https://files.pythonhosted.org/packages/7e/99/7690b6d4034fffd95959cbe0c02de8deb3098cc577c67bb6a24fe5d7caa7/markupsafe-3.0.3.tar.gz"
+    sha256 "722695808f4b6457b320fdc131280796bdceb04ab50fe1795cd540799ebe1698"
   end
 
   resource "python-dateutil" do
@@ -61,8 +61,8 @@ class Alibuild < Formula
   end
 
   resource "pyyaml" do
-    url "https://files.pythonhosted.org/packages/54/ed/79a089b6be93607fa5cdaedf301d7dfb23af5f25c398d5ead2525b063e17/pyyaml-6.0.2.tar.gz"
-    sha256 "d584d9ec91ad65861cc08d42e834324ef890a082e591037abe114850ff7bbc3e"
+    url "https://files.pythonhosted.org/packages/05/8e/961c0007c59b8dd7729d542c61a4d537767a59645b82a0b521206e1e25c2/pyyaml-6.0.3.tar.gz"
+    sha256 "d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f"
   end
 
   resource "requests" do
