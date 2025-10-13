@@ -3,8 +3,8 @@ class Alibuild < Formula
 
   desc "ALICE Build Tool"
   homepage "https://alisw.github.io/alibuild"
-  url "https://files.pythonhosted.org/packages/f3/9a/4a8311c6ff69887e0a3ba7ccb5ffe37a94432470bbf4fde49cf99c5da631/alibuild-1.17.30.tar.gz"
-  sha256 "80b2509d0805ac1ff861307cae9622702f7b6afbb0d0484ee2151ac58630bdb1"
+  url "https://files.pythonhosted.org/packages/64/75/d7b16f9a2137b0fd9849eabcfcf675956c66c4a8f7fa6ada75d14deb1883/alibuild-1.17.31.tar.gz"
+  sha256 "6a001625a69a1c6376a1069a22430d11e53bd766e459710f1f78cff281f9423b"
   depends_on "libyaml"
   depends_on "modules"
   depends_on "pigz"
@@ -21,8 +21,8 @@ class Alibuild < Formula
   end
 
   resource "certifi" do
-    url "https://files.pythonhosted.org/packages/dc/67/960ebe6bf230a96cda2e0abcf73af550ec4f090005363542f0765df162e0/certifi-2025.8.3.tar.gz"
-    sha256 "e564105f78ded564e3ae7c923924435e1daa7463faeab5bb932bc53ffae63407"
+    url "https://files.pythonhosted.org/packages/4c/5b/b6ce21586237c77ce67d01dc5507039d444b630dd76611bbca2d8e5dcd91/certifi-2025.10.5.tar.gz"
+    sha256 "47c09d31ccf2acf0be3f701ea53595ee7e0b8fa08801c6624be771df09ae7b43"
   end
 
   resource "charset-normalizer" do
@@ -36,8 +36,8 @@ class Alibuild < Formula
   end
 
   resource "idna" do
-    url "https://files.pythonhosted.org/packages/f1/70/7703c29685631f5a7590aa73f1f1d3fa9a380e654b86af429e0934a32f7d/idna-3.10.tar.gz"
-    sha256 "12f65c9b470abda6dc35cf8e63cc574b1c52b11df2c86030af0ac09b01b13ea9"
+    url "https://files.pythonhosted.org/packages/6f/6d/0703ccc57f3a7233505399edb88de3cbd678da106337b9fcde432b65ed60/idna-3.11.tar.gz"
+    sha256 "795dafcc9c04ed0c1fb032c2aa73654d8e8c5023a7df64a53f39190ada629902"
   end
 
   resource "jinja2" do
