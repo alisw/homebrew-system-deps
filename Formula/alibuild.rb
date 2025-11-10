@@ -3,8 +3,8 @@ class Alibuild < Formula
 
   desc "ALICE Build Tool"
   homepage "https://alisw.github.io/alibuild"
-  url "https://files.pythonhosted.org/packages/64/75/d7b16f9a2137b0fd9849eabcfcf675956c66c4a8f7fa6ada75d14deb1883/alibuild-1.17.31.tar.gz"
-  sha256 "6a001625a69a1c6376a1069a22430d11e53bd766e459710f1f78cff281f9423b"
+  url "https://files.pythonhosted.org/packages/54/ef/1769bcdc0bcb2250e0fb457d18576823effee93c653cf9102ab4979c5374/alibuild-1.17.33.tar.gz"
+  sha256 "21be94e96554cdc6f6437e61bb33ab27856569d73246e93323dae718494ef889"
   depends_on "libyaml"
   depends_on "modules"
   depends_on "pigz"
@@ -26,8 +26,8 @@ class Alibuild < Formula
   end
 
   resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/83/2d/5fd176ceb9b2fc619e63405525573493ca23441330fcdaee6bef9460e924/charset_normalizer-3.4.3.tar.gz"
-    sha256 "6fce4b8500244f6fcb71465d4a4930d132ba9ab8e71a7859e6a5d59851068d14"
+    url "https://files.pythonhosted.org/packages/13/69/33ddede1939fdd074bce5434295f38fae7136463422fe4fd3e0e89b98062/charset_normalizer-3.4.4.tar.gz"
+    sha256 "94537985111c35f28720e43603b8e7b43a6ecfb2ce1d3058bbe955b73404e21a"
   end
 
   resource "distro" do
