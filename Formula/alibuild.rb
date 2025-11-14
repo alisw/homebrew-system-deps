@@ -3,8 +3,9 @@ class Alibuild < Formula
 
   desc "ALICE Build Tool"
   homepage "https://alisw.github.io/alibuild"
-  url "https://files.pythonhosted.org/packages/54/ef/1769bcdc0bcb2250e0fb457d18576823effee93c653cf9102ab4979c5374/alibuild-1.17.33.tar.gz"
-  sha256 "21be94e96554cdc6f6437e61bb33ab27856569d73246e93323dae718494ef889"
+  url "https://pypi.org/project/alibuild"
+  version "1.17.34"
+  sha256 "84a97afa76f704725689fb181dafc6ad019e162d149a4a55ee91d268f154c0b3"
   depends_on "libyaml"
   depends_on "modules"
   depends_on "pigz"
@@ -21,8 +22,8 @@ class Alibuild < Formula
   end
 
   resource "certifi" do
-    url "https://files.pythonhosted.org/packages/4c/5b/b6ce21586237c77ce67d01dc5507039d444b630dd76611bbca2d8e5dcd91/certifi-2025.10.5.tar.gz"
-    sha256 "47c09d31ccf2acf0be3f701ea53595ee7e0b8fa08801c6624be771df09ae7b43"
+    url "https://files.pythonhosted.org/packages/a2/8c/58f469717fa48465e4a50c014a0400602d3c437d7c0c468e17ada824da3a/certifi-2025.11.12.tar.gz"
+    sha256 "d8ab5478f2ecd78af242878415affce761ca6bc54a22a27e026d7c25357c3316"
   end
 
   resource "charset-normalizer" do
