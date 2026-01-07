@@ -17,7 +17,9 @@ class BbStorage < Formula
     targets = %w[
       //cmd/bb_storage/:bb_storage
     ]
-    system Formula["bazelisk"].opt_bin/"bazelisk", "build", *bazel_args, *targets
+    cd "bb-storage" do
+      system Formula["bazelisk"].opt_bin/"bazelisk", "build", *bazel_args, *targets
+    end
 
     bin.install %w[
       bazel-bin/cmd/bb_storage/bb_storage_/bb_storage
