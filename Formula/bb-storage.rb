@@ -1,4 +1,4 @@
-class BuildBarnStorage < Formula
+class BbStorage < Formula
   desc "BuildBarnStorage Daemon"
   homepage "https://github.com/buildbarn/bb-storage"
   url "https://github.com/buildbarn/bb-storage",
