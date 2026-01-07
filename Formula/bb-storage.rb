@@ -11,17 +11,16 @@ class BbStorage < Formula
     bazel_args = %W[
       --jobs=#{ENV.make_jobs}
       --compilation_mode=opt
-      --copt=#{optflag}
       --linkopt=-Wl,-rpath,#{rpath}
       --verbose_failures
     ]
     targets = %w[
-      cmd/bb_storage/:bb_storage
+      //cmd/bb_storage/:bb_storage
     ]
     system Formula["bazelisk"].opt_bin/"bazelisk", "build", *bazel_args, *targets
 
     bin.install %w[
-      bazel-bin/cmd/bb_storage/bb_storage
+      bazel-bin/cmd/bb_storage/bb_storage_/bb_storage
     ]
 
   end
