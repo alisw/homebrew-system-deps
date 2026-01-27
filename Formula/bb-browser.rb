@@ -27,7 +27,7 @@ class BbBrowser < Formula
     system Formula["bazelisk"].opt_bin/"bazelisk", "build", *bazel_args, *targets
 
     bin.install %w[
-      bazel-bin/cmd/bb_browser/bb_browser/bb_browser
+      bazel-bin/cmd/bb_browser/bb_browser_/bb_browser
     ]
 
     (etc/"bb_browser").mkpath
