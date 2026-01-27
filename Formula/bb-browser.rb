@@ -1,5 +1,5 @@
-class BbStorage < Formula
-  desc "BuildBarnStorage Daemon"
+class BbBrowser < Formula
+  desc "BuildBarn Browser Interface"
   homepage "https://github.com/buildbarn/bb-browser"
   url "https://github.com/buildbarn/bb-browser.git",
       revision: "9886820de1cc9ad4183bf765266161260d514d91"
