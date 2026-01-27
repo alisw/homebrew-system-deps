@@ -32,6 +32,9 @@ class BbStorage < Formula
 
     (etc/"bb_storage").mkpath
     (var/"bb_storage/storage-cas/").mkpath
+    (var/"bb_storage/storage-ac/").mkpath
+    (var/"bb_storage/storage-ac/persistent_state").mkpath
+    (var/"recc/casd/").mkpath
     (etc/"bb_storage/config.jsonnet").write default_config unless (etc/"bb_storage/config.jsonnet").exist?
   end
 
@@ -106,9 +109,7 @@ class BbStorage < Formula
           },
         },
         getAuthorizer: { allow: {} },
-        putAuthorizer: { instanceNamePrefix: {
-          allowedInstanceNamePrefixes: ['foo'],
-        } },
+        putAuthorizer: { allow: {} },
       },
       global: { diagnosticsHttpServer: {
         httpServers: [{
@@ -119,7 +120,7 @@ class BbStorage < Formula
         enablePprof: true,
       } },
       grpcServers: [{
-        listenAddresses: [':8980'],
+        listenPaths: ['#{var}/recc/casd/casd.sock'],
         authenticationPolicy: { allow: {} },
       }],
       schedulers: {
