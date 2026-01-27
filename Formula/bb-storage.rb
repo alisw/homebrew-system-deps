@@ -31,6 +31,9 @@ class BbStorage < Formula
     ]
 
     (etc/"bb_storage").mkpath
+    (var/"bb_storage/storage-cas/").mkpath
+    (var/"bb_storage/storage-cas/blocks").mkpath
+    (var/"bb_storage/storage-cas/persistent_state").mkpath
     (etc/"bb_storage/config.jsonnet").write default_config unless (etc/"bb_storage/config.jsonnet").exist?
   end
 
