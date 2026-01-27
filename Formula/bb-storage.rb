@@ -32,8 +32,6 @@ class BbStorage < Formula
 
     (etc/"bb_storage").mkpath
     (var/"bb_storage/storage-cas/").mkpath
-    (var/"bb_storage/storage-cas/blocks").mkpath
-    (var/"bb_storage/storage-cas/persistent_state").mkpath
     (etc/"bb_storage/config.jsonnet").write default_config unless (etc/"bb_storage/config.jsonnet").exist?
   end
 
@@ -134,7 +132,7 @@ class BbStorage < Formula
   end
 
   service do
-    run [opt_bin/"bb_storage", "--config", etc/"bb_storage/config.jsonnet"]
+    run [opt_bin/"bb_storage", etc/"bb_storage/config.jsonnet"]
     keep_alive true
     working_dir var/"bb_storage"
     log_path var/"log/bb_storage.log"
