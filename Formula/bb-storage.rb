@@ -11,8 +11,8 @@ class BbStorage < Formula
   def install
     # Notice this is needed to bypass the sandbox correctly
     # when building with bazel
-    ENV["CC"] = "/usr/bin/clang"
-    ENV["CXX"] = "/usr/bin/clang++"
+    ENV["CC"] = ENV.cc
+    ENV["CXX"] = ENV.cxx
 
     bazel_args = %W[
       --jobs=#{ENV.make_jobs}
@@ -37,97 +37,97 @@ class BbStorage < Formula
 
   def default_config
     <<~EOS
-    {
-      contentAddressableStorage: {
-        backend: {
-          'local': {
-            keyLocationMapOnBlockDevice: {
-              file: {
-                path: '#{var}/bb_storage/storage-cas/key_location_map',
-                sizeBytes: 16 * 1024 * 1024,
-              },
-            },
-            keyLocationMapMaximumGetAttempts: 16,
-            keyLocationMapMaximumPutAttempts: 64,
-            oldBlocks: 8,
-            currentBlocks: 24,
-            newBlocks: 3,
-            blocksOnBlockDevice: {
-              source: {
+      {
+        contentAddressableStorage: {
+          backend: {
+            'local': {
+              keyLocationMapOnBlockDevice: {
                 file: {
-                  path: '#{var}/bb_storage/storage-cas/blocks',
-                  sizeBytes: 10 * 1024 * 1024 * 1024,
+                  path: '#{var}/bb_storage/storage-cas/key_location_map',
+                  sizeBytes: 16 * 1024 * 1024,
                 },
               },
-              spareBlocks: 3,
-            },
-            persistent: {
-              stateDirectoryPath: '#{var}/bb_storage/storage-cas/persistent_state',
-              minimumEpochInterval: '300s',
-            },
-          },
-        },
-        getAuthorizer: { allow: {} },
-        putAuthorizer: { allow: {} },
-        findMissingAuthorizer: { allow: {} },
-      },
-      actionCache: {
-        backend: {
-          completenessChecking: {
-            backend: {
-              'local': {
-                keyLocationMapOnBlockDevice: {
+              keyLocationMapMaximumGetAttempts: 16,
+              keyLocationMapMaximumPutAttempts: 64,
+              oldBlocks: 8,
+              currentBlocks: 24,
+              newBlocks: 3,
+              blocksOnBlockDevice: {
+                source: {
                   file: {
-                    path: '#{var}/bb_storage/storage-ac/key_location_map',
-                    sizeBytes: 1024 * 1024,
+                    path: '#{var}/bb_storage/storage-cas/blocks',
+                    sizeBytes: 10 * 1024 * 1024 * 1024,
                   },
                 },
-                keyLocationMapMaximumGetAttempts: 16,
-                keyLocationMapMaximumPutAttempts: 64,
-                oldBlocks: 8,
-                currentBlocks: 24,
-                newBlocks: 1,
-                blocksOnBlockDevice: {
-                  source: {
+                spareBlocks: 3,
+              },
+              persistent: {
+                stateDirectoryPath: '#{var}/bb_storage/storage-cas/persistent_state',
+                minimumEpochInterval: '300s',
+              },
+            },
+          },
+          getAuthorizer: { allow: {} },
+          putAuthorizer: { allow: {} },
+          findMissingAuthorizer: { allow: {} },
+        },
+        actionCache: {
+          backend: {
+            completenessChecking: {
+              backend: {
+                'local': {
+                  keyLocationMapOnBlockDevice: {
                     file: {
-                      path: '#{var}/bb_storage/storage-ac/blocks',
-                      sizeBytes: 100 * 1024 * 1024,
+                      path: '#{var}/bb_storage/storage-ac/key_location_map',
+                      sizeBytes: 1024 * 1024,
                     },
                   },
-                  spareBlocks: 3,
-                },
-                persistent: {
-                  stateDirectoryPath: '#{var}/bb_storage/storage-ac/persistent_state',
-                  minimumEpochInterval: '300s',
+                  keyLocationMapMaximumGetAttempts: 16,
+                  keyLocationMapMaximumPutAttempts: 64,
+                  oldBlocks: 8,
+                  currentBlocks: 24,
+                  newBlocks: 1,
+                  blocksOnBlockDevice: {
+                    source: {
+                      file: {
+                        path: '#{var}/bb_storage/storage-ac/blocks',
+                        sizeBytes: 100 * 1024 * 1024,
+                      },
+                    },
+                    spareBlocks: 3,
+                  },
+                  persistent: {
+                    stateDirectoryPath: '#{var}/bb_storage/storage-ac/persistent_state',
+                    minimumEpochInterval: '300s',
+                  },
                 },
               },
+              maximumTotalTreeSizeBytes: 16 * 1024 * 1024,
             },
-            maximumTotalTreeSizeBytes: 16 * 1024 * 1024,
           },
+          getAuthorizer: { allow: {} },
+          putAuthorizer: { instanceNamePrefix: {
+            allowedInstanceNamePrefixes: ['foo'],
+          } },
         },
-        getAuthorizer: { allow: {} },
-        putAuthorizer: { instanceNamePrefix: {
-          allowedInstanceNamePrefixes: ['foo'],
+        global: { diagnosticsHttpServer: {
+          httpServers: [{
+            listenAddresses: [':9980'],
+            authenticationPolicy: { allow: {} },
+          }],
+          enablePrometheus: true,
+          enablePprof: true,
         } },
-      },
-      global: { diagnosticsHttpServer: {
-        httpServers: [{
-          listenAddresses: [':9980'],
+        grpcServers: [{
+          listenAddresses: [':8980'],
           authenticationPolicy: { allow: {} },
         }],
-        enablePrometheus: true,
-        enablePprof: true,
-      } },
-      grpcServers: [{
-        listenAddresses: [':8980'],
-        authenticationPolicy: { allow: {} },
-      }],
-      schedulers: {
-        bar: { endpoint: { address: 'bar-scheduler:8981' } },
-      },
-      executeAuthorizer: { allow: {} },
-      maximumMessageSizeBytes: 16 * 1024 * 1024,
-    }
+        schedulers: {
+          bar: { endpoint: { address: 'bar-scheduler:8981' } },
+        },
+        executeAuthorizer: { allow: {} },
+        maximumMessageSizeBytes: 16 * 1024 * 1024,
+      }
     EOS
   end
 
