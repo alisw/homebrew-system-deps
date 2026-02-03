@@ -32,6 +32,7 @@ class BbStorage < Formula
 
     (etc/"bb_storage").mkpath
     (var/"bb_storage/storage-cas/").mkpath
+    (var/"bb_storage/storage-cas/persistent_state").mkpath
     (var/"bb_storage/storage-ac/").mkpath
     (var/"bb_storage/storage-ac/persistent_state").mkpath
     (var/"recc/casd/").mkpath
