@@ -25,7 +25,7 @@ class O2FullDeps < Formula
   depends_on "libpng"
   depends_on "libtool"
   depends_on "libxml2"
-  depends_on "llvm@18"
+  depends_on "llvm@20"
   depends_on "m4"
   depends_on "make"
   depends_on "modules"
