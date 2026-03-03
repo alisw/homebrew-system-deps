@@ -41,18 +41,18 @@ class BbBrowser < Formula
         blobstore: {
           actionCache: {
             grpc: {
-              address: 'bb-storage:8980',
+              address: 'unix:///opt/homebrew/var/recc/casd/casd.sock',
             },
           },
           contentAddressableStorage: {
             grpc: {
-              address: 'bb-storage:8980',
+              address: 'unix:///opt/homebrew/var/recc/casd/casd.sock',
             },
           },
         },
         maximumMessageSizeBytes: 16777216,
         httpServers: [{
-          listenAddresses: [':80'],
+          listenAddresses: [':7080'],
           authenticationPolicy: { allow: {} },
         }],
         authorizer: {
