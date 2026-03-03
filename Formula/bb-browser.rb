@@ -31,6 +31,7 @@ class BbBrowser < Formula
     ]
 
     (etc/"bb_browser").mkpath
+    (var/"bb_browser/").mkpath
     (etc/"bb_browser/config.jsonnet").write default_config unless (etc/"bb_browser/config.jsonnet").exist?
   end
 
