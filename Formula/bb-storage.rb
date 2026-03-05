@@ -60,7 +60,7 @@ class BbStorage < Formula
               source: {
                 file: {
                   path: '#{var}/bb_storage/storage-cas/blocks',
-                  sizeBytes: 10 * 1024 * 1024 * 1024,
+                  sizeBytes: 50 * 1024 * 1024 * 1024,
                 },
               },
               spareBlocks: 3,

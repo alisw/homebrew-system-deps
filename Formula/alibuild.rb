@@ -3,26 +3,26 @@ class Alibuild < Formula
 
   desc "ALICE Build Tool"
   homepage "https://alisw.github.io/alibuild"
-  url "https://files.pythonhosted.org/packages/fc/99/dcbb9926a5fe8954c3c5832e542fb8402f2d423d49a3dd4375c119679f95/alibuild-1.17.40.tar.gz"
-  sha256 "5036c19948d92416c1c3f8372f0a455663c211d8b8db2f3461d0f65487ce0419"
+  url "https://files.pythonhosted.org/packages/13/63/b349315203783b1b7a47ada2048ac3d92f1d93488bf152f756c047ae6019/alibuild-1.17.41.tar.gz"
+  sha256 "4db97e9618c1d97f7bf4af94c89c8517cfbd5f33c9923f7857dc35388a25b562"
   depends_on "libyaml"
   depends_on "modules"
   depends_on "pigz"
   depends_on "s3cmd"
 
   resource "boto3" do
-    url "https://files.pythonhosted.org/packages/c2/47/29afb754de7df0a0ebceaa9d83e209136ef7b62744259a6c09862fef4765/boto3-1.42.43.tar.gz"
-    sha256 "01fc5501209b23849fb30b01c6c086583ac91c40842a76083662fbfb84a82491"
+    url "https://files.pythonhosted.org/packages/b0/4e/499cb52aaee9468c346bcc1158965e24e72b4e2a20052725b680e0ac949b/boto3-1.42.59.tar.gz"
+    sha256 "6c4a14a4eb37b58a9048901bdeefbe1c529638b73e8f55413319a25f010ca211"
   end
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/af/d6/def916ad1d13de5d511074afcde538a958e2e8a7c7020fb698d1f392f63b/botocore-1.42.43.tar.gz"
-    sha256 "41d04ead0b0862eec21f841811fb5764fe370a2df9b319e0d5297325c50fba1b"
+    url "https://files.pythonhosted.org/packages/45/ae/50fb33bdf1911c216d50f98d989dd032a506f054cf829ebd737c6fa7e3e6/botocore-1.42.59.tar.gz"
+    sha256 "5314f19e1da8fc0ebc41bdb8bbe17c9a7397d87f4d887076ac8bdef972a34138"
   end
 
   resource "certifi" do
-    url "https://files.pythonhosted.org/packages/e0/2d/a891ca51311197f6ad14a7ef42e2399f36cf2f9bd44752b3dc4eab60fdc5/certifi-2026.1.4.tar.gz"
-    sha256 "ac726dd470482006e014ad384921ed6438c457018f4b3d204aea4281258b2120"
+    url "https://files.pythonhosted.org/packages/af/2d/7bf41579a8986e348fa033a31cdd0e4121114f6bce2457e8876010b092dd/certifi-2026.2.25.tar.gz"
+    sha256 "e887ab5cee78ea814d3472169153c2d12cd43b14bd03329a39a9c6e2e80bfba7"
   end
 
   resource "charset-normalizer" do
