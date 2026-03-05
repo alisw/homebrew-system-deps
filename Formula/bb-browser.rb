@@ -76,7 +76,7 @@ class BbBrowser < Formula
       Configuration file: #{etc}/bb_browser/config.jsonnet
 
       To start the service:
-        brew services start bb_browser
+        brew services start bb-browser
     EOS
   end
 end
