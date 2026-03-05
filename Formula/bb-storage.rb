@@ -146,7 +146,7 @@ class BbStorage < Formula
       Configuration file: #{etc}/bb_storage/config.jsonnet
 
       To start the service:
-        brew services start bb_storage
+        brew services start bb-storage
     EOS
   end
 end
