@@ -7,6 +7,7 @@ class O2FullDeps < Formula
 
   depends_on "autoconf"
   depends_on "automake"
+  depends_on "bison"
   depends_on "clang-format"
   depends_on "cmake"
   depends_on "coreutils"
