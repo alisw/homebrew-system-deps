@@ -5,6 +5,9 @@ class Alibuild < Formula
   homepage "https://alisw.github.io/alibuild"
   url "https://files.pythonhosted.org/packages/13/63/b349315203783b1b7a47ada2048ac3d92f1d93488bf152f756c047ae6019/alibuild-1.17.41.tar.gz"
   sha256 "4db97e9618c1d97f7bf4af94c89c8517cfbd5f33c9923f7857dc35388a25b562"
+
+  head "https://github.com/alisw/alibuild.git", branch: "master"
+
   depends_on "libyaml"
   depends_on "modules"
   depends_on "pigz"
