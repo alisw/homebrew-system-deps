@@ -2,7 +2,7 @@ class O2FullDeps < Formula
   desc "ALICE O2 System Dependencies via Homebrew"
   homepage "https://alisw.github.io"
   url "file:///dev/null"
-  version "25.31-1" # year.week numbering -- run "date +%y.%W"
+  version "26.10" # year.week numbering -- run "date +%y.%W"
   sha256 "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 
   depends_on "autoconf"
