@@ -9,6 +9,7 @@ class Alibuild < Formula
   depends_on "modules"
   depends_on "pigz"
   depends_on "s3cmd"
+  depends_on "container" if MacOS.version >= :tahoe
 
   resource "boto3" do
     url "https://files.pythonhosted.org/packages/4e/f6/b280afd91b2284744c0bb26afa1272bd60270726b4d3999fc27b68200854/boto3-1.42.77.tar.gz"
