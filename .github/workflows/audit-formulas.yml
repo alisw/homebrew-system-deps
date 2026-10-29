@@ -28,6 +28,15 @@ jobs:
         set -x
         cp -r Formula/ "$(brew --repository)"/Library/Taps/homebrew-releaser/homebrew-test/Formula/
 
+    - name: Trust the temporary tap
+      run: |
+        set -x
+        # brew refuses to load formulae from any non-official tap, including the
+        # one we just created.
+        brew trust homebrew-releaser/test
+        # alice-build-machine depends on consul and nomad from hashicorp/tap.
+        brew trust hashicorp/tap
+
     - name: Audit formulas
       run: |
         set -x
