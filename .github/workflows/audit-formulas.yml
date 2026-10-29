@@ -16,7 +16,7 @@ jobs:
 
     - name: Set up Homebrew
       id: set-up-homebrew
-      uses: Homebrew/actions/setup-homebrew@master
+      uses: Homebrew/actions/setup-homebrew@main
 
     - name: Create temporary tap
       run: |
@@ -28,10 +28,23 @@ jobs:
         set -x
         cp -r Formula/ "$(brew --repository)"/Library/Taps/homebrew-releaser/homebrew-test/Formula/
 
+    - name: Trust the temporary tap
+      run: |
+        set -x
+        # brew refuses to load formulae from any non-official tap, including the
+        # one we just created.
+        brew trust homebrew-releaser/test
+        # alice-build-machine depends on consul and nomad from hashicorp/tap.
+        brew trust hashicorp/tap
+
     - name: Audit formulas
       run: |
         set -x
-        for file in "$(brew --repository)"/Library/Taps/homebrew-releaser/homebrew-test/Formula/*
+        # Audit every formula before failing, so one run reports all of them
+        # instead of stopping at the first.
+        rc=0
+        for file in "$(brew --repository)"/Library/Taps/homebrew-releaser/homebrew-test/Formula/*.rb
         do
-            brew audit --formula "homebrew-releaser/test/$(basename "${file%.rb}")"
+            brew audit --formula "homebrew-releaser/test/$(basename "${file%.rb}")" || rc=1
         done
+        exit "$rc"

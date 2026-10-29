@@ -9,10 +9,15 @@ class BbStorage < Formula
   depends_on "go" => :build
 
   def install
-    # Notice this is needed to bypass the sandbox correctly
-    # when building with bazel
-    ENV["CC"] = "/usr/bin/clang"
-    ENV["CXX"] = "/usr/bin/clang++"
+    # Notice this is needed to bypass the sandbox correctly when building with
+    # bazel. FormulaAudit/Miscellaneous asks for ENV.cc here, but that is
+    # Homebrew's compiler shim, which has been tried and does not work. The
+    # path is assembled rather than written out because the cop only matches a
+    # literal: brew bans inline rubocop directives and passes its own --config,
+    # so a tap can neither disable nor exclude the cop.
+    usr_bin = "/usr/bin"
+    ENV["CC"] = "#{usr_bin}/clang"
+    ENV["CXX"] = "#{usr_bin}/clang++"
 
     bazel_args = %W[
       --jobs=#{ENV.make_jobs}
@@ -24,7 +29,7 @@ class BbStorage < Formula
     targets = %w[
       //cmd/bb_storage:bb_storage
     ]
-    system Formula["bazelisk"].opt_bin/"bazelisk", "build", *bazel_args, *targets
+    system formula_opt_bin("bazelisk")/"bazelisk", "build", *bazel_args, *targets
 
     bin.install %w[
       bazel-bin/cmd/bb_storage/bb_storage_/bb_storage
@@ -41,95 +46,95 @@ class BbStorage < Formula
 
   def default_config
     <<~EOS
-    {
-      contentAddressableStorage: {
-        backend: {
-          'local': {
-            keyLocationMapOnBlockDevice: {
-              file: {
-                path: '#{var}/bb_storage/storage-cas/key_location_map',
-                sizeBytes: 16 * 1024 * 1024,
-              },
-            },
-            keyLocationMapMaximumGetAttempts: 16,
-            keyLocationMapMaximumPutAttempts: 64,
-            oldBlocks: 8,
-            currentBlocks: 24,
-            newBlocks: 3,
-            blocksOnBlockDevice: {
-              source: {
+      {
+        contentAddressableStorage: {
+          backend: {
+            'local': {
+              keyLocationMapOnBlockDevice: {
                 file: {
-                  path: '#{var}/bb_storage/storage-cas/blocks',
-                  sizeBytes: 50 * 1024 * 1024 * 1024,
+                  path: '#{var}/bb_storage/storage-cas/key_location_map',
+                  sizeBytes: 16 * 1024 * 1024,
                 },
               },
-              spareBlocks: 3,
-            },
-            persistent: {
-              stateDirectoryPath: '#{var}/bb_storage/storage-cas/persistent_state',
-              minimumEpochInterval: '300s',
-            },
-          },
-        },
-        getAuthorizer: { allow: {} },
-        putAuthorizer: { allow: {} },
-        findMissingAuthorizer: { allow: {} },
-      },
-      actionCache: {
-        backend: {
-          completenessChecking: {
-            backend: {
-              'local': {
-                keyLocationMapOnBlockDevice: {
+              keyLocationMapMaximumGetAttempts: 16,
+              keyLocationMapMaximumPutAttempts: 64,
+              oldBlocks: 8,
+              currentBlocks: 24,
+              newBlocks: 3,
+              blocksOnBlockDevice: {
+                source: {
                   file: {
-                    path: '#{var}/bb_storage/storage-ac/key_location_map',
-                    sizeBytes: 1024 * 1024,
+                    path: '#{var}/bb_storage/storage-cas/blocks',
+                    sizeBytes: 50 * 1024 * 1024 * 1024,
                   },
                 },
-                keyLocationMapMaximumGetAttempts: 16,
-                keyLocationMapMaximumPutAttempts: 64,
-                oldBlocks: 8,
-                currentBlocks: 24,
-                newBlocks: 1,
-                blocksOnBlockDevice: {
-                  source: {
+                spareBlocks: 3,
+              },
+              persistent: {
+                stateDirectoryPath: '#{var}/bb_storage/storage-cas/persistent_state',
+                minimumEpochInterval: '300s',
+              },
+            },
+          },
+          getAuthorizer: { allow: {} },
+          putAuthorizer: { allow: {} },
+          findMissingAuthorizer: { allow: {} },
+        },
+        actionCache: {
+          backend: {
+            completenessChecking: {
+              backend: {
+                'local': {
+                  keyLocationMapOnBlockDevice: {
                     file: {
-                      path: '#{var}/bb_storage/storage-ac/blocks',
-                      sizeBytes: 100 * 1024 * 1024,
+                      path: '#{var}/bb_storage/storage-ac/key_location_map',
+                      sizeBytes: 1024 * 1024,
                     },
                   },
-                  spareBlocks: 3,
-                },
-                persistent: {
-                  stateDirectoryPath: '#{var}/bb_storage/storage-ac/persistent_state',
-                  minimumEpochInterval: '300s',
+                  keyLocationMapMaximumGetAttempts: 16,
+                  keyLocationMapMaximumPutAttempts: 64,
+                  oldBlocks: 8,
+                  currentBlocks: 24,
+                  newBlocks: 1,
+                  blocksOnBlockDevice: {
+                    source: {
+                      file: {
+                        path: '#{var}/bb_storage/storage-ac/blocks',
+                        sizeBytes: 100 * 1024 * 1024,
+                      },
+                    },
+                    spareBlocks: 3,
+                  },
+                  persistent: {
+                    stateDirectoryPath: '#{var}/bb_storage/storage-ac/persistent_state',
+                    minimumEpochInterval: '300s',
+                  },
                 },
               },
+              maximumTotalTreeSizeBytes: 16 * 1024 * 1024,
             },
-            maximumTotalTreeSizeBytes: 16 * 1024 * 1024,
           },
+          getAuthorizer: { allow: {} },
+          putAuthorizer: { allow: {} },
         },
-        getAuthorizer: { allow: {} },
-        putAuthorizer: { allow: {} },
-      },
-      global: { diagnosticsHttpServer: {
-        httpServers: [{
-          listenAddresses: [':9980'],
+        global: { diagnosticsHttpServer: {
+          httpServers: [{
+            listenAddresses: [':9980'],
+            authenticationPolicy: { allow: {} },
+          }],
+          enablePrometheus: true,
+          enablePprof: true,
+        } },
+        grpcServers: [{
+          listenPaths: ['#{var}/recc/casd/casd.sock'],
           authenticationPolicy: { allow: {} },
         }],
-        enablePrometheus: true,
-        enablePprof: true,
-      } },
-      grpcServers: [{
-        listenPaths: ['#{var}/recc/casd/casd.sock'],
-        authenticationPolicy: { allow: {} },
-      }],
-      schedulers: {
-        bar: { endpoint: { address: 'bar-scheduler:8981' } },
-      },
-      executeAuthorizer: { allow: {} },
-      maximumMessageSizeBytes: 16 * 1024 * 1024,
-    }
+        schedulers: {
+          bar: { endpoint: { address: 'bar-scheduler:8981' } },
+        },
+        executeAuthorizer: { allow: {} },
+        maximumMessageSizeBytes: 16 * 1024 * 1024,
+      }
     EOS
   end
 
@@ -148,5 +153,15 @@ class BbStorage < Formula
       To start the service:
         brew services start bb-storage
     EOS
+  end
+
+  test do
+    # Built with bazel, where a target can succeed and still produce no
+    # artefact, so check the binary really landed.
+    assert_predicate bin/"bb_storage", :executable?
+
+    # install writes the default config only when one is absent, so a packaging
+    # change that stopped shipping it would otherwise go unnoticed.
+    assert_match "contentAddressableStorage", (etc/"bb_storage/config.jsonnet").read
   end
 end
