@@ -16,7 +16,7 @@ jobs:
 
     - name: Set up Homebrew
       id: set-up-homebrew
-      uses: Homebrew/actions/setup-homebrew@master
+      uses: Homebrew/actions/setup-homebrew@main
 
     - name: Create temporary tap
       run: |
@@ -31,7 +31,7 @@ jobs:
     - name: Audit formulas
       run: |
         set -x
-        for file in "$(brew --repository)"/Library/Taps/homebrew-releaser/homebrew-test/Formula/*
+        for file in "$(brew --repository)"/Library/Taps/homebrew-releaser/homebrew-test/Formula/*.rb
         do
             brew audit --formula "homebrew-releaser/test/$(basename "${file%.rb}")"
         done
