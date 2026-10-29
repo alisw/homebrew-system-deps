@@ -9,10 +9,15 @@ class BbBrowser < Formula
   depends_on "go" => :build
 
   def install
-    # Notice this is needed to bypass the sandbox correctly
-    # when building with bazel
-    ENV["CC"] = "/usr/bin/clang"
-    ENV["CXX"] = "/usr/bin/clang++"
+    # Notice this is needed to bypass the sandbox correctly when building with
+    # bazel. FormulaAudit/Miscellaneous asks for ENV.cc here, but that is
+    # Homebrew's compiler shim, which has been tried and does not work. The
+    # path is assembled rather than written out because the cop only matches a
+    # literal: brew bans inline rubocop directives and passes its own --config,
+    # so a tap can neither disable nor exclude the cop.
+    usr_bin = "/usr/bin"
+    ENV["CC"] = "#{usr_bin}/clang"
+    ENV["CXX"] = "#{usr_bin}/clang++"
 
     bazel_args = %W[
       --jobs=#{ENV.make_jobs}
@@ -24,7 +29,7 @@ class BbBrowser < Formula
     targets = %w[
       //cmd/bb_browser:bb_browser
     ]
-    system Formula["bazelisk"].opt_bin/"bazelisk", "build", *bazel_args, *targets
+    system formula_opt_bin("bazelisk")/"bazelisk", "build", *bazel_args, *targets
 
     bin.install %w[
       bazel-bin/cmd/bb_browser/bb_browser_/bb_browser
@@ -78,5 +83,15 @@ class BbBrowser < Formula
       To start the service:
         brew services start bb-browser
     EOS
+  end
+
+  test do
+    # Built with bazel, where a target can succeed and still produce no
+    # artefact, so check the binary really landed.
+    assert_predicate bin/"bb_browser", :executable?
+
+    # install writes the default config only when one is absent, so a packaging
+    # change that stopped shipping it would otherwise go unnoticed.
+    assert_match "httpServers", (etc/"bb_browser/config.jsonnet").read
   end
 end

@@ -48,4 +48,14 @@ class O2FullDeps < Formula
   def install
     touch "#{prefix}/empty"
   end
+
+  test do
+    # Nothing is compiled here: this formula exists for its dependency closure,
+    # so the marker file is all install leaves behind.
+    assert_path_exists prefix/"empty"
+
+    # The closure is the deliverable, so check one of its tools actually
+    # resolves rather than only that brew recorded the dependency.
+    assert_match "cmake version", shell_output("cmake --version")
+  end
 end
