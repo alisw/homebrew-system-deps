@@ -29,10 +29,24 @@ jobs:
       - name: Add tap
         run: |
           brew tap alisw/system-deps ${{ github.workspace }}
+          # brew refuses to load formulae from any non-official tap.
+          brew trust alisw/system-deps
+          # alice-build-machine depends on consul and nomad from hashicorp/tap.
+          brew trust hashicorp/tap
       
       - name: Test install formula
         run: |
           brew install ${{ matrix.formula }}
+      
+      - name: Run formula test block
+        run: |
+          # brew test prunes a dependency only if its LATEST version is
+          # installed, unlike brew install, which accepts a compatible older
+          # keg. The runner image ships packages that lag the live formulae, so
+          # without this the test refuses with "missing test dependencies".
+          deps=$(brew deps --formula ${{ matrix.formula }})
+          [ -z "$deps" ] || brew upgrade $deps || true
+          brew test --verbose ${{ matrix.formula }}
       
       - name: Cleanup
         run: |
