@@ -18,4 +18,12 @@ class AliceBuildMachine < Formula
   def install
     touch "#{prefix}/empty"
   end
+
+  test do
+    # A dependency-only formula: install leaves just the marker file.
+    assert_path_exists prefix/"empty"
+
+    # Check the closure resolves, not merely that it was declared.
+    assert_match "jq-", shell_output("jq --version")
+  end
 end
