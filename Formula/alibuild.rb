@@ -90,4 +90,28 @@ class Alibuild < Formula
     bin.install_symlink "#{libexec}/bin/aliBuild" => "aliBuild"
     bin.install_symlink "#{libexec}/bin/alienv" => "alienv"
   end
+
+  test do
+    # aliBuild reports a screenview before the version subcommand returns.
+    # Defensive only: HOME here has no analytics uuid and stdout is not a tty,
+    # which is already enough for aliBuild to disable analytics by itself and
+    # never prompt. This keeps it from reporting if either stops being true.
+    ENV["ALIBUILD_NO_ANALYTICS"] = "1"
+
+    # A resource bump breaks the vendored virtualenv, not the files, so run the
+    # installed entry points rather than asserting they exist.
+    assert_match "aliBuild version: #{version}",
+                 shell_output("#{bin}/aliBuild version")
+
+    # More than argument parsing: detection imports alibuild_helpers and reads
+    # the host, so an incomplete virtualenv fails here rather than on first use.
+    assert_match(/\Aosx_(x86-64|arm64)\z/,
+                 shell_output("#{bin}/aliBuild architecture").strip)
+
+    # The second entry point, which is a shell script and not part of the
+    # virtualenv. `help` is handled in the argument loop and exits 0 before
+    # anything looks for a work dir; the help text goes to stderr.
+    assert_match "load environment for aliBuild packages",
+                 shell_output("#{bin}/alienv help 2>&1")
+  end
 end
