@@ -149,4 +149,14 @@ class BbStorage < Formula
         brew services start bb-storage
     EOS
   end
+
+  test do
+    # Built with bazel, where a target can succeed and still produce no
+    # artefact, so check the binary really landed.
+    assert_predicate bin/"bb_storage", :executable?
+
+    # install writes the default config only when one is absent, so a packaging
+    # change that stopped shipping it would otherwise go unnoticed.
+    assert_match "contentAddressableStorage", (etc/"bb_storage/config.jsonnet").read
+  end
 end

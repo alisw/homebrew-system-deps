@@ -79,4 +79,14 @@ class BbBrowser < Formula
         brew services start bb-browser
     EOS
   end
+
+  test do
+    # Built with bazel, where a target can succeed and still produce no
+    # artefact, so check the binary really landed.
+    assert_predicate bin/"bb_browser", :executable?
+
+    # install writes the default config only when one is absent, so a packaging
+    # change that stopped shipping it would otherwise go unnoticed.
+    assert_match "httpServers", (etc/"bb_browser/config.jsonnet").read
+  end
 end

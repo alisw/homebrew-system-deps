@@ -15,8 +15,8 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - macos-14
           - macos-15
+          - macos-26
         formula:
           - alibuild
           - alice-build-machine
@@ -28,7 +28,7 @@ jobs:
       
       - name: Add tap
         run: |
-          brew tap sergio/system-deps ${{ github.workspace }}
+          brew tap alisw/system-deps ${{ github.workspace }}
       
       - name: Test install formula
         run: |
@@ -37,4 +37,4 @@ jobs:
       - name: Cleanup
         run: |
           brew uninstall ${{ matrix.formula }} || true
-          brew untap sergio/system-deps || true
+          brew untap alisw/system-deps || true
